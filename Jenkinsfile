@@ -5,7 +5,7 @@ node {
     }
 
     stage('Instalar Dependencias') {
-        sh 'npm install'
+        'npm install'
     }
 
     stage('Construir') {
