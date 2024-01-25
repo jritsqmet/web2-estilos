@@ -11,12 +11,5 @@ node {
         sh 'npm run build'
     }
 
-    stage('Enviar Correo con Log') {
-        emailext(
-            subject: "Notificación de Construcción Jenkins",
-            body: currentBuild.rawBuild.getLog(),
-            to: "rosero.julio.d@gmail.com, jroserogit@gmail.com",
-            mimeType: 'text/plain',
-        )
-    }
+    
 }
