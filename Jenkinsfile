@@ -9,6 +9,11 @@ node {
 
     stage('Construir') {
         sh 'npm run build'
+       emailext(
+        subject: 'Build exitoso',
+        body: 'El build se completó correctamente.',
+        to: 'rosero.julio.d@gmail.com'
+      )
     }
 
     
