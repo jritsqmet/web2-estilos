@@ -14,7 +14,7 @@ node {
     stage('Enviar Correo con Log') {
         emailext(
             subject: "Notificación de Construcción Jenkins",
-            body: currentBuild.getLog(),
+            body: currentBuild.rawBuild.getLog(),
             to: "destinatario@example.com",
             mimeType: 'text/plain',
         )
