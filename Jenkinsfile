@@ -1,45 +1,22 @@
-pipeline {
-    agent any
-
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
-        stage('Instalar Dependencias') {
-            steps {
-                sh 'npm install'
-            }
-        }
-
-        stage('Construir') {
-            steps {
-                sh 'npm run build'
-            }
-        }
-
-        stage('Enviar Correo con Log') {
-            steps {
-                script {
-                    emailext(
-                        subject: "Notificación de Construcción Jenkins",
-                        body: currentBuild.getLog(),
-                        to: "destinatario@example.com",
-                        mimeType: 'text/plain',
-                    )
-                }
-            }
-        }
+node {
+    stage('Checkout') {
+        checkout scm
     }
 
-    post {
-        success {
-            echo 'Build successful! Run additional deployment steps if needed.'
-        }
-        failure {
-            echo 'Build failed! Take necessary actions.'
-        }
+    stage('Instalar Dependencias') {
+        sh 'npm install'
+    }
+
+    stage('Construir') {
+        sh 'npm run build'
+    }
+
+    stage('Enviar Correo con Log') {
+        emailext(
+            subject: "Notificación de Construcción Jenkins",
+            body: currentBuild.getLog(),
+            to: "destinatario@example.com",
+            mimeType: 'text/plain',
+        )
     }
 }
