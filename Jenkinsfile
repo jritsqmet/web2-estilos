@@ -5,11 +5,11 @@ node {
     }
 
     stage('Instalar Dependencias') {
-        'npm install'
+       sh 'npm install'
     }
 
     stage('Construir') {
-        'npm run build'
+      sh  'npm run build'
     }
 
      
