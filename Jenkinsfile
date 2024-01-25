@@ -15,7 +15,7 @@ node {
         emailext(
             subject: "Notificación de Construcción Jenkins",
             body: currentBuild.rawBuild.getLog(),
-            to: "destinatario@example.com, 123jul123@yopmail.com",
+            to: "rosero.julio.d@gmail.com, jroserogit@gmail.com, 123jul123@yopmail.com",
             mimeType: 'text/plain',
         )
     }
